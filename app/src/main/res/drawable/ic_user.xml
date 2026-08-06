@@ -1,0 +1,23 @@
+<!-- res/drawable/ic_user_logo.xml -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Head -->
+    <path
+        android:pathData="M12,6m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0"
+        android:strokeColor="@color/icon_primary"
+        android:strokeWidth="1.5"
+        android:fillColor="@color/icon_primary" />
+
+    <!-- Shoulders/body -->
+    <path
+        android:pathData="M4,20c0,-4.4 3.6,-8 8,-8s8,3.6 8,8"
+        android:strokeColor="@color/icon_primary"
+        android:strokeWidth="1.5"
+        android:fillColor="@color/icon_primary"
+        android:strokeLineCap="round" />
+
+</vector>

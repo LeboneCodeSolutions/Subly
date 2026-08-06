@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Brand / Foundation -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Background -->
+    <color name="background_primary">@color/white</color>
+    <color name="background_secondary">@color/blue_50</color>
+    <!-- Neutral Palette -->
+    <color name="gray_900">#FF1A1A1A</color>
+    <color name="gray_600">#FF4A4A4A</color>
+    <color name="gray_400">#FF6D6D6D</color>
+
+    <color name="blue_800">#FF2E6ADE</color>
+    <color name="blue_600">#FF2C8EFF</color>
+    <color name="blue_50">#FFDCEBFF</color>
+
+    <!-- Input Field -->
+    <color name="input_primary">@color/white</color>
+    <color name="input_secondary">@color/black</color>
+    <!-- UI Roles -->
+    <color name="text_primary">@color/gray_900</color>
+    <color name="text_secondary">@color/gray_600</color>
+    <color name="text_hint">@color/gray_400</color>
+    <!-- Button -->
+    <color name="btn_primary">@color/black</color>
+    <color name="btn_secondary">@color/blue_600</color>
+
+
+    <!-- Primary Brand -->
+    <color name="primary">#FF6200EE</color>
+
+    <!-- User Icon -->
+    <color name="icon_primary">@color/blue_800</color>
+    <color name="icon_secondary">@color/blue_600</color>
+    <color name="icon_hint">@color/blue_50</color>
+</resources>

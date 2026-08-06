@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Subly</string>
+    <string name="app_logo">App logo</string>
+    <string name="toggle_password_visibility">Toggle password visibility</string>
+    <string name="google_icon">Google icon</string>
+    <string name="apple_icon">Apple icon</string>
+
+    <string name="google_label_icon">Google</string>
+    <string name="apple_label_icon">Apple</string>
+
+    <!-- Activity Registration-->
+    <string name="register_title">Create Account</string>
+    <string name="register_subtitle">Track every subscription in one place.</string>
+    <string name="register_tab_login">Login</string>
+    <string name="register_tab_register">Register</string>
+    <string name="register_label_full_name">Full name</string>
+    <string name="register_hint_full_name">e.g. John Doe</string>
+    <string name="register_label_email">Email</string>
+    <string name="register_hint_email">name@email.com</string>
+    <string name="register_label_password">Password</string>
+    <string name="register_hint_password">At least 8 characters</string>
+    <string name="register_label_confirm_password">Confirm password</string>
+    <string name="register_hint_confirm_password">Re-enter password</string>
+    <string name="register_btn_create">Create account</string>
+    <string name="register_divider_or">or continue with</string>
+    <string name="register_social_google">Google</string>
+    <string name="register_social_apple">Apple</string>
+    <string name="register_footer_login_prompt">Already have an account? Log in</string>
+
+</resources>
