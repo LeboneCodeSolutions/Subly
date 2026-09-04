@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.Subly" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.Subly" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/blue_600</item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
 </resources>

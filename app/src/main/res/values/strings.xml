@@ -14,8 +14,8 @@
     <string name="register_tab_login">Login</string>
     <string name="register_tab_register">Register</string>
     <string name="register_label_full_name">Full name</string>
-    <string name="register_hint_full_name">e.g. John Doe</string>
-    <string name="register_label_email">Email</string>
+    <string name="register_hint_full_name">John Doe</string>
+    <string name="register_label_email">Email Address</string>
     <string name="register_hint_email">name@email.com</string>
     <string name="register_label_password">Password</string>
     <string name="register_hint_password">At least 8 characters</string>

@@ -1,0 +1,24 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+
+    <!-- Badge background -->
+    <path
+        android:pathData="M24,0 C37.25,0 48,10.75 48,24 C48,37.25 37.25,48 24,48 C10.75,48 0,37.25 0,24 C0,10.75 10.75,0 24,0 Z"
+        android:fillColor="@color/blue_600" />
+
+    <!-- S shape -->
+    <path
+        android:pathData="M30,16 C28.5,14.5 26.5,14 24,14 C20,14 17,16 17,19 C17,22.5 20,23.5 24,24.5 C28,25.5 31,26.5 31,30 C31,33 28,35 24,35 C21,35 18.5,34 17,32"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="3.2"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+    <!-- full stop -->
+    <path
+        android:pathData="M156,39 C158.2,39 160,40.8 160,43 C160,45.2 158.2,47 156,47 C153.8,47 152,45.2 152,43 C152,40.8 153.8,39 156,39 Z"
+        android:fillColor="@color/white" />
+</vector>
