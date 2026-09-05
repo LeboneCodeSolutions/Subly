@@ -9,4 +9,18 @@ object RegexPatterns {
     val PASSWORD_REGEX = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!_])(?=\\S+$).{8,}$".toRegex()
     val NUMBER_REGEX = "^[1-8]\\d{8}$".toRegex()
 
+
+    val UPPERCASE_REGEX = ".*[A-Z].*".toRegex()
+    val VALID_NUMBER_REGEX = ".*\\d.*".toRegex()
+    val SPECIAL_CHARACTER_REGEX = ".*[^a-zA-Z0-9].*".toRegex()
+
+    fun regexCheckList(): List<Regex> {
+        val list = listOf(
+            UPPERCASE_REGEX,
+            VALID_NUMBER_REGEX,
+            SPECIAL_CHARACTER_REGEX
+        )
+        return list
+    }
+
 }

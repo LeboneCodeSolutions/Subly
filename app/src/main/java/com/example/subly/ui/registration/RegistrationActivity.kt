@@ -1,4 +1,5 @@
 package com.example.subly.ui.registration
+import android.content.Context
 import android.content.res.ColorStateList
 import android.content.res.ColorStateList.valueOf
 import android.os.Bundle
@@ -11,6 +12,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getColor
 import com.example.subly.R
 import com.google.android.material.button.MaterialButton
@@ -18,13 +20,16 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.example.subly.models.UserInfo
 import com.example.subly.ui.concrete.ColorChangeUITextImpl
-import com.example.subly.ui.service.colorHandler.InvalidHandler
+import com.example.subly.ui.concrete.ErrorUIAlert
+import com.example.subly.ui.concrete.SuccessUIAlert
+import com.example.subly.ui.service.colorHandler.TextColorModifier
+import com.example.subly.ui.concrete.WarningUIAlert
 import com.example.subly.ui.service.inputHandler.EmailAddressValidationHandler
 import utils.RegexPatterns
 import com.example.subly.ui.service.inputHandler.MobileNumberValidationHandler
 import com.example.subly.ui.service.inputHandler.NameValidationHandler
 import com.example.subly.ui.service.inputHandler.PasswordValidationHandler
-import com.example.subly.ui.service.colorHandler.ValidHandler
+
 /**
  * Registration Activity that hosts the user registration form.
  */
@@ -59,9 +64,6 @@ class RegistrationActivity : AppCompatActivity() {
         val tfPhone: TextInputEditText = findViewById(R.id.tfPhone)
         val tfPassword: TextInputEditText = findViewById(R.id.tfPassword)
 
-
-        // UI State changer
-
         ColorChangeUITextImpl().colorChangeUIText(
             this,
             tfFirstName,
@@ -92,22 +94,18 @@ class RegistrationActivity : AppCompatActivity() {
             tilPhone,
             RegexPatterns.NUMBER_REGEX
         )
-
         updatePasswordUI(tfPassword, tvStrengthValue)
-
-
-        val user = UserInfo(
-            firstName = tfFirstName.text.toString().trim(),
-            lastName = tfLastName.text.toString().trim(),
-            email = tfEmailAddress.text.toString().trim(),
-            phone = tfPhone.text.toString().trim(),
-            password = tfPassword.text.toString().trim()
-        )
 
 
         btnCreateAccount.setOnClickListener {
 
-
+            val user = UserInfo(
+                firstName = tfFirstName.text.toString().trim(),
+                lastName = tfLastName.text.toString().trim(),
+                email = tfEmailAddress.text.toString().trim(),
+                phone = tfPhone.text.toString().trim(),
+                password = tfPassword.text.toString().trim()
+            )
             // We validate all fields so the user sees all errors at once
             val isFirstValid = NameValidationHandler().setValidationType(user.firstName)
             val isLastValid = NameValidationHandler().setValidationType(user.lastName)
@@ -158,65 +156,70 @@ class RegistrationActivity : AppCompatActivity() {
         if (password.matches(".*[^a-zA-Z0-9].*".toRegex())) {
             score++
         }
-        //  updateStrengthUI(score)
+        updateStrengthUI(score)
     }
 
+    fun weakStatus() {
+        tvStrengthValue.text = "Weak"
+        ErrorUIAlert().tvAlert(
+            this,
+            tvStrengthValue,
+            tvPasswordRequirement,
+            tvPasswordRequirement2,
+            TextColorModifier()
+        )
 
-    /** fun updateStrengthUI(score: Int) {
-    // Make sure the background has been measured
-
-    tvStrengthValue.post {
-
-    if (score <= 1) {
-    // Weak
-    tvStrengthValue.text = "Weak"
-    tvStrengthValue.setTextColor(R.color.color_error)
-    tvPasswordRequirement.setTextColor(R.color.blue_800)
-    ivShield.imageTintList = valueOf(
-    ContextCompat.getColor(this, R.color.color_error)
-    )
-
-    } else if (score == 2 || score == 3) {
-    // Medium
-
-    tvStrengthValue.text = "Medium"
-
-
-    tvStrengthValue.setTextColor(R.color.color_warning)
-    tvPasswordRequirement.setTextColor(R.color.color_warning)
-    tvPasswordRequirement2.setTextColor(R.color.color_warning)
-    ivShield.imageTintList = valueOf(
-    getColor(this, R.color.color_warning)
-    )
-
-    } else if (score == 4) {
-    // Strong
-    tvStrengthValue.text = "Strong"
-
-
-    tvStrengthValue.setTextColor(R.color.blue_600)
-
-    tvPasswordRequirement.setTextColor(R.color.blue_600)
-    tvPasswordRequirement2.setTextColor(R.color.blue_600)
-
-
-
-    ivShield.imageTintList = valueOf(
-    ContextCompat.getColor(this, R.color.blue_600)
-    )
-
-    } else {
-    // Very strong
-    tvStrengthValue.text = "Very Strong"
-
-
-    tvStrengthValue.setTextColor(R.color.blue_800)
+        ivShield.imageTintList = valueOf(
+            getColor(this, R.color.color_error)
+        )
     }
+    fun mediumStatus() {
+        tvStrengthValue.text = "Medium"
+        WarningUIAlert().tvAlert(
+            this,
+            tvStrengthValue,
+            tvPasswordRequirement,
+            tvPasswordRequirement2,
+            TextColorModifier()
+        )
+        ivShield.imageTintList = valueOf(
+            getColor(this, R.color.color_warning)
+        )
     }
-    }*/
+    fun strongStatus() {
+        // Strong
+        tvStrengthValue.text = "Strong"
+        SuccessUIAlert().tvAlert(
+            this,
+            tvStrengthValue,
+            tvPasswordRequirement,
+            tvPasswordRequirement2,
+            TextColorModifier()
+        )
+
+        ivShield.imageTintList = valueOf(
+            getColor(this, R.color.color_success)
+        )
+    }
+    fun updateStrengthUI(score: Int) {
+        tvStrengthValue.post {
+            when {
+                score <= 1 -> weakStatus()
+                score <= 3 -> mediumStatus()
+                else -> strongStatus()
+            }
+        }
+    }
     fun updatePasswordUI(textInputEditText: TextInputEditText, textView: TextView) {
         textInputEditText.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun beforeTextChanged(
+                s: CharSequence?,
+                start: Int,
+                count: Int,
+                after: Int
+            ) {
+            }
+
             override fun afterTextChanged(s: Editable?) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 updatePasswordStrength(
@@ -227,5 +230,3 @@ class RegistrationActivity : AppCompatActivity() {
         })
     }
 }
-
-
